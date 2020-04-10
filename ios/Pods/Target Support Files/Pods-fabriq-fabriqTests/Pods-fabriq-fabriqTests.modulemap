@@ -1,0 +1,6 @@
+module Pods_fabriq_fabriqTests {
+  umbrella header "Pods-fabriq-fabriqTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
