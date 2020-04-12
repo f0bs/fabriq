@@ -1,27 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import LoginRegister from './screens/LoginRegister'
+import Register from './screens/Register'
 
-const App = () => {
-  return (
-    <View style = {styles.container}>
-      <Text style = {styles.text}> Fabriq </Text>
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-    </View>
-  )
-}
+const Stack = createStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center',
-    backgroundColor: 'lightblue'
-  },
+export default class App extends Component {
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name = "LoginRegister" component = { LoginRegister }  options={{ headerShown: false }}/>
 
-  text: {
-    color: 'black',
-    fontSize: 30,
+          <Stack.Screen name = "Register" component = {Register} options={{ headerShown: false }}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
   }
-})
-
-export default App;
+}
