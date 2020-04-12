@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Button, StyleSheet } from 'react-native';
 
-// import { Button } from 'react-native-elements';
 // import { Button } from 'react-native-button';
 import Register from './Register'
 
@@ -17,10 +16,14 @@ export default class LoginRegister extends Component {
           <Text style = {styles.subtitle}> Manage all your clothing in one platform </Text>
         </View>
         <View style = {styles.button_container}>
-        <Button title = "Create an account" onPress = {() => console.log("hi")}/>
-        <Button title = "Login" onPress = {() => console.log("hi")}/>
         
-        {/* <Button onPress={() => console.log("hi")}> Create an account </Button>  */}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {}}  >
+          <Text style={styles.customBtnText}>Create an account</Text>
+        </TouchableOpacity>
+
+        <Button title = "Login" onPress = {() => console.log("hi")}/>
         </View>
       </View>
 
@@ -38,17 +41,20 @@ export default class LoginRegister extends Component {
     },
 
     subtitle_container: {
-      marginTop: 10,
+      marginTop: 5,
       width: '80%',
       alignItems: 'center',
       textAlign: 'center'
     },
 
     button: {
-      backgroundColor: '#00aeef',
-      borderColor: 'red',
-      borderWidth: 5,
-      borderRadius: 15 
+      marginTop: 10,
+      marginBottom: 5,
+      backgroundColor: "#03adfc",
+      paddingHorizontal: 60,
+      paddingVertical: 10,
+      padding: 20,
+      borderRadius: 10
     },
 
     button_container: {
@@ -57,6 +63,12 @@ export default class LoginRegister extends Component {
       alignItems: 'center',
       justifyContent: 'center',
     },
+
+    customBtnText: {
+      fontSize: 20,
+      fontWeight: '400',
+      color: "white",
+  },
   
     title: {
       color: 'black',
