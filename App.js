@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import LoginRegister from './screens/LoginRegister'
 import Register from './screens/Register'
+import FetchingEmails from './screens/FetchingEmails'
 
 import { NavigationContainer, HeaderBackButton } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -20,6 +21,7 @@ export default class App extends Component {
         <Stack.Navigator>
           <Stack.Screen name = "LoginRegister" component = { LoginRegister }  options={{ headerShown: false }}/>
           <Stack.Screen name = "Register" component = {Register} options={{ headerShown: false }}/>
+          <Stack.Screen name = "FetchingEmails" component = {FetchingEmails} options={{ headerShown: false }}/>
         </Stack.Navigator>
       </NavigationContainer>
     )
