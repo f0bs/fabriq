@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import LoginRegister from './screens/LoginRegister'
-import Register from './screens/Register'
+import Register from './screens/FindClothes'
 import FetchingEmails from './screens/FetchingEmails'
+import EmailsFound from './screens/EmailsFound'
 
 import { NavigationContainer, HeaderBackButton } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
-
 
 const navigationOptions = ({ navigation }) => ({
   headerLeft: <HeaderBackButton onPress={() => navigation.goBack()} />,
@@ -20,8 +20,9 @@ export default class App extends Component {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name = "LoginRegister" component = { LoginRegister }  options={{ headerShown: false }}/>
-          <Stack.Screen name = "Register" component = {Register} options={{ headerShown: false }}/>
+          <Stack.Screen name = "FindClothes" component = {Register} options={{ headerShown: false }}/>
           <Stack.Screen name = "FetchingEmails" component = {FetchingEmails} options={{ headerShown: false }}/>
+          <Stack.Screen name = "EmailsFound" component = {EmailsFound} options={{ headerShown: false }}/>
         </Stack.Navigator>
       </NavigationContainer>
     )

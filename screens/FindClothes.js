@@ -1,9 +1,11 @@
 import React, { Component }  from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default class Register extends Component {
+export default class FindClothes extends Component {
 render() {
 
+  const { navigate } = this.props.navigation;
+      
 return (
   <View style = {styles.container}>
     <View style = {styles.title_container}>
@@ -14,25 +16,13 @@ return (
     <View style = {styles.email_container}>
       <TextInput
         style={styles.email_textinput}
-        placeholder="emily.fabriq1@gmail.com"/>
-    </View>
-
-    <View style = {styles.email_container}>
-      <TextInput
-        style={styles.email_textinput}
-        placeholder="emily.fabriq2@gmail.com"/>
-    </View>
-
-    <View style = {styles.email_container}>
-      <TextInput
-        style={styles.email_textinput}
-        placeholder="emily.fabriq3@gmail.com"/>    
+        placeholder="emily.fabriq@gmail.com"/>
     </View>
 
     <View style = {styles.button_container}>
       <TouchableOpacity
           style={styles.authorize_button}
-          onPress={() => {}}  >
+          onPress={() => navigate('FetchingEmails')}  >
           <Text style={styles.authorize_text}>Authorize</Text>
         </TouchableOpacity>
     </View>
@@ -51,7 +41,8 @@ const styles = StyleSheet.create({
 container: {
   flex: 1,
   justifyContent: 'flex-start',
-  alignItems: 'flex-start'
+  alignItems: 'flex-start',
+  backgroundColor: 'white'
 }, 
 
 title_container: {
@@ -73,9 +64,9 @@ email_textinput: {
   marginLeft: '5%',
   height: 50, 
   minWidth: '90%',
-  borderColor: "black", 
+  borderColor: "#E4E4E4", 
   borderWidth: 2,
-  borderRadius: 10,
+  borderRadius: 5,
   textAlign: "center"
 },
 
@@ -92,9 +83,12 @@ authorize_button: {
   backgroundColor: "#58BFF9", //"#03adfc",
   paddingHorizontal: '35%',
   paddingVertical: 15,
-  borderRadius: 10,
+  borderRadius: 5,
   minWidth: '90%',
-  textAlign: 'center'
+  textAlign: 'center',
+  shadowOffset:{  width: 10,  height: 5,  },
+  shadowColor: 'black',
+  shadowOpacity: 0.1,
 },
 
 authorize_text: {
