@@ -5,13 +5,41 @@ import * as FabriqStyle from '../constants/style.js';
 
 class ClothingList extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedItems: []
+    }
+  }
+
+  refreshItemStatus(itemStatus) {
+    newSelectedItems = this.state.selectedItems
+
+    if (itemStatus.selected) {
+      if (!newSelectedItems.includes(itemStatus.itemId))  {
+        newSelectedItems.push(itemStatus)
+        this.setState({
+          items: newSelectedItems
+        })
+      }
+    } else {
+      index = newSelectedItems.indexOf(itemStatus);
+      if (index != -1)  {
+        delete newSelectedItems[index]
+        this.setState({
+          items: newSelectedItems
+        })
+      }
+    }
+  }
     render() {
-      const { clothing_data } = this.props;
+      const { clothing_data, navigateFunc } = this.props;
+
         return (
             <FlatList
         data={clothing_data}
         renderItem={({ item }) => (
-          <ClothingCell item = {item}/>
+          <ClothingCell item_cell = {item} refreshItemStatus = {this.refreshItemStatus.bind(this)} />
         )}
         ItemSeparatorComponent={this.renderSeparator}
         ListFooterComponent={this.renderFooter}
@@ -32,6 +60,10 @@ class ClothingList extends Component {
         />
       );
     };
+
+    confirmItems = (items, navigate) => {
+      console.log(items);
+    }
   
     renderFooter = () => {
       // if (!this.state.loading) return null;
@@ -46,7 +78,7 @@ class ClothingList extends Component {
           }}
         >
           <TouchableOpacity
-                onPress={() => {}}
+                onPress={this.confirmItems(this.state.items, this.props.navigateFunc)}
                 style = {clothingStyles.continue_button}
                 >
               <Text style={clothingStyles.add_button_text}> Continue </Text>
@@ -77,6 +109,7 @@ class ClothingCell extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      item: this.props.item_cell,
       added: false,
       textValue: 'Add Item',
       style: clothingStyles.add_button_unselected,
@@ -93,11 +126,15 @@ class ClothingCell extends Component {
         textValue: newTextValue,
         style: newStyle
       })
+
+      // const { item } = this.state;
+
+      // itemStatus = {itemId: item.id, selected: this.state.added}
+      // this.props.refreshItemStatus(itemStatus);
       
     }
 
     render() {
-      const { item } = this.props;
       return(
       <ListItem
             leftAvatar = {<Avatar large source={{uri: item.uri}} height={`75%`} width={`15%`}/>}
@@ -126,6 +163,7 @@ export default class EmailsFound extends Component {
 
     render() {
       const { goBack, navigate } = this.props.navigation;
+
     //   const clothing_array = this.props.navigation.state.params.clothing_data;
       
       return (
@@ -141,7 +179,7 @@ export default class EmailsFound extends Component {
         </View>
 
         <View style = {clothingStyles.clothinglist_container}>
-          <ClothingList clothing_data = {DATA_DUMMY} />
+          <ClothingList clothing_data = { DATA_DUMMY } navigateFunc = { navigate } />
         </View>
 
       </SafeAreaView>
