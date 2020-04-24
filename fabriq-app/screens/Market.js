@@ -84,6 +84,9 @@ export default class Market extends Component {
                     </View>
                 </Card> 
             </View>
+            < TouchableOpacity onPress={() => navigate('Market')}>
+                <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
+            </TouchableOpacity>
         </ SafeAreaView>
     );
   }
@@ -120,8 +123,8 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         marginVertical: 30,
         marginHorizontal: 30,
-        height: 200,
-        marginBottom:200,
+        height: 200
+        // marginBottom:200,
     },
     containerStyle:{
         marginLeft: '5%',
@@ -204,6 +207,12 @@ const styles = StyleSheet.create({
     },
     buy_icon:{
         color: '#03adfc'
+    },
+    navbar:{
+        height: 60,
+        width:400,
+        marginLeft: 5,
+        marginTop:90
     }
 });
 

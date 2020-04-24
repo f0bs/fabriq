@@ -14,10 +14,6 @@ export default class ClothingDetail extends Component {
         buttonState: selected
       }
     }
-
-    toggleColor() {
-      console.log(selected)
-    }
     render() {
       const { navigate } = this.props.navigation;
       const { item } = this.props.route.params;
@@ -49,7 +45,6 @@ export default class ClothingDetail extends Component {
             <Text style = {styles.category_text}>Size</Text>
             <View style = {styles.size_container}> 
               {this.state.sizeList.map((size, i) => {
-                console.log(this.state)
                 if (this.state.buttonState[i]) {
                   return (
                     <View style = {styles.selected_size_button}>

@@ -38,7 +38,7 @@ export default class LoginRegister extends Component {
 
         <TouchableOpacity
           style={styles.login_button}
-          onPress={() => {}}  >
+          onPress={() => navigate('Market')}>
           <Text style={styles.login_text}>Log in with email</Text>
         </TouchableOpacity>
 

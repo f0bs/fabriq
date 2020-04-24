@@ -53,24 +53,25 @@ export default class Wardrobe extends Component {
       const {category, item_list}  = categoryItem;
       return (
        <TouchableOpacity 
-       style = {styles.card_container}
-       key= {category}
-       onPress={() => navigate('ClothingCategory', {category: category, items: item_list})}>
+            style = {styles.card_container}
+            key= {category}
+            onPress={() => navigate('ClothingCategory', {category: category, items: item_list})}>
+            <Card
+              image={Images.Clothing[category]}
+              imageStyle={styles.image} >
+              <Text style={styles.card_title}>{category} </Text> 
+              <Text style={styles.card_subtitle}>{item_list.length} item(s)</Text> 
+            </Card>
 
-        <Card
-        image={Images.Clothing[category]}
-        imageStyle={styles.image} >
-        <Text style={styles.card_title}>{category} </Text> 
-        <Text style={styles.card_subtitle}>{item_list.length} item(s)</Text> 
-</Card>
-
-</TouchableOpacity>
+      </TouchableOpacity>
         )
   })
 }
 
         </View>
-        
+        < TouchableOpacity onPress={() => navigate('Market')}>
+          <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
+        </TouchableOpacity>
 
       </SafeAreaView>
 
@@ -172,6 +173,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: "white", // "#0384fc" //"white",
 },
+  navbar:{
+    height: 60,
+    width:400,
+    marginLeft: 5
+  }
 })
 
 const DATA_DUMMY = [

@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react';
-import { ScrollView, View, Text, SafeAreaView, FlatList, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, SafeAreaView, FlatList, TouchableOpacity,Image, ActivityIndicator, StyleSheet } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements'
 import * as FabriqStyle from '../constants/style.js';
 
@@ -79,6 +79,10 @@ export default class ClothingCategory extends Component {
         <View style = {clothingStyles.clothinglist_container}>
           <ClothingCategoryList clothing_data = { items } navigate = { navigate } />
         </View>
+
+        < TouchableOpacity onPress={() => navigate('Market')}>
+                <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
+        </TouchableOpacity>
 
       </SafeAreaView>
 
@@ -225,6 +229,12 @@ Array.prototype.remove = function(from, to) {
         color: 'black',
         fontSize: 16,
         fontFamily: 'Avenir'
+    },
+      navbar:{
+        height: 60,
+        width:400,
+        marginLeft: 5,
+        marginTop:560
     }
     
   })
