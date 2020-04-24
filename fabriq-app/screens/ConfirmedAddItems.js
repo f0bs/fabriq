@@ -6,8 +6,8 @@ export default class ConfirmedAddItems extends Component {
 
     render() {
       const { navigate } = this.props.navigation;
-      const { numItems } = this.props.route.params;
-      
+      const { items } = this.props.route.params;
+
       const successIconFilePath = "../assets/white-green-tick.jpeg"
 
       return (
@@ -18,7 +18,7 @@ export default class ConfirmedAddItems extends Component {
         </View>
 
         <View style = {styles.subtitle_container}>
-          <Text style = {styles.subtitle}> {`You have imported ${numItems} clothing item(s) into your wardrobe.`} </Text>
+          <Text style = {styles.subtitle}>{`You have imported ${items.length} clothing item(s) into your wardrobe.`} </Text>
         </View>
 
         <View style = {styles.icon_container}>
@@ -27,7 +27,8 @@ export default class ConfirmedAddItems extends Component {
         <TouchableOpacity
           style={styles.wardrobe_button}
           // onPress={() => navigate('Wardrobe')}  >
-          onPress={() => navigate('Market')}  >
+          // onPress={() => navigate('Market')}  >
+          onPress={() => navigate('Wardrobe', {justAdded: items})}  >
           <Text style={styles.wardrobe_text}>Continue</Text>
         </TouchableOpacity>
         </View>
@@ -37,11 +38,11 @@ export default class ConfirmedAddItems extends Component {
     )
   }
 }
-  
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start', 
+    justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: 'white'
   },
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
       marginLeft: '5%',
       width: '85%',
       marginTop: '10%',
-      justifyContent: 'flex-start', 
+      justifyContent: 'flex-start',
       alignItems: 'flex-start',
       backgroundColor: 'white',
       marginBottom: 10
@@ -58,9 +59,9 @@ const styles = StyleSheet.create({
 
   subtitle_container: {
       marginTop: 10,
-      marginLeft: '3%',
+      marginLeft: '5%',
       width: '85%',
-      justifyContent: 'center', 
+      justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: 'white',
       marginBottom: 10
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     marginLeft: '5%',
     width: '85%',
     marginTop: '10%',
-    justifyContent: 'center', 
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
     marginBottom: 10
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
   subtitle: {
       color: 'black',
       fontSize: 16,
-      fontFamily: 'Optima'
+      fontFamily: 'Avenir'
   },
 
   success_icon: {

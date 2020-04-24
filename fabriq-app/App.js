@@ -9,7 +9,8 @@ import Wardrobe from './screens/Wardrobe'
 import Market from './screens/Market'
 import ItemDetail from './screens/ItemDetail'
 import ConfirmedOffer from './screens/ConfirmedOffer'
-
+import ClothingCategory from './screens/ClothingCategory'
+import ClothingDetail from './screens/ClothingDetail'
 import { NavigationContainer, HeaderBackButton } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -33,7 +34,8 @@ export default class App extends Component {
           <Stack.Screen name = "Market" component = {Market} options={{ headerShown: false }}/>
           <Stack.Screen name = "ItemDetail" component = {ItemDetail} options={{ headerShown: false }}/>
           <Stack.Screen name = "ConfirmedOffer" component = {ConfirmedOffer} options={{ headerShown: false }}/>
-
+          <Stack.Screen name = "ClothingCategory" component = {ClothingCategory} options={{ headerShown: false }}/>
+          <Stack.Screen name = "ClothingDetail" component = {ClothingDetail} options={{ headerShown: false }}/>
         </Stack.Navigator>
       </NavigationContainer>
     )

@@ -19,7 +19,7 @@ export default class FetchingEmails extends Component {
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigate('EmailsFound', {clothing_data: []})}  >
-          <Text style={styles.register_text}>Skip (testing for now)</Text>
+          <Text style={styles.skip_text}>Skip (testing for now)</Text>
         </TouchableOpacity>
 
       </SafeAreaView>
@@ -49,7 +49,7 @@ export default class FetchingEmails extends Component {
         marginTop: 40,
         marginBottom: 5,
         backgroundColor: "#03adfc", //"#03adfc",
-        paddingHorizontal: '23%',
+        paddingHorizontal: '21%',
         paddingVertical: 10,
         borderRadius: 5,
         height: 45,
@@ -68,6 +68,12 @@ export default class FetchingEmails extends Component {
         justifyContent: 'center', 
         alignItems: 'center',
         backgroundColor: 'white',
+      },
+
+      skip_text: {
+        fontSize: 15,
+        fontWeight: '600',
+        color: "white", // "#0384fc" //"white",
       },
   
     title: {

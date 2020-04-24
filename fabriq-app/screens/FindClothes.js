@@ -9,8 +9,8 @@ render() {
 return (
   <View style = {styles.container}>
     <View style = {styles.title_container}>
-      <Text style = {styles.text}> Find your clothes from  </Text>
-      <Text style = {styles.text}> your emails </Text>
+      <Text style = {styles.text}>Find your clothes from </Text>
+      <Text style = {styles.text}>your email  </Text>
     </View>
 
     <View style = {styles.email_container}>
@@ -48,14 +48,15 @@ container: {
 title_container: {
   height: 80, 
   marginTop: '25%',
-  marginLeft: 25,
+  marginLeft: '6%',
   width: '80%',
+  height: 60,
   // justifyContent: 'center', 
   // alignItems: 'center'
 },
 
 email_container: {
-  marginTop: 25,
+  marginTop: 35,
   justifyContent: 'center',
   alignItems: 'center'
 },
@@ -99,8 +100,8 @@ authorize_text: {
 
 text: {
   color: 'black',
-  fontSize: 30,
-  fontFamily: 'Optima'
+  fontSize: 25,
+  fontFamily: 'Avenir-Medium'
 },
 
 disclaimer_container: {
