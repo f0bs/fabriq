@@ -5,10 +5,35 @@ import * as FabriqStyle from '../constants/style.js';
 import Images from '../images/images.js';
 
 export default class Wardrobe extends Component {
+    categorize(itemList) {
+        categoryList = []
+        items = []
+        itemList.map((item) => {
+            index = categoryList.indexOf(item.category)
+            if (index != -1) {
+                items[index].push(item);
+            } else {
+                categoryList.push(item.category)
+                items[categoryList.length - 1] = [item]
+            }
+        })
+        
+        res = []
+        categoryList.map((category, i) => {
+            categoryJson = {}
+            categoryJson["category"] = category
+            categoryJson["item_list"] = items[i]
+            res.push(categoryJson)
+        })
+        return res;
+    }
+
     constructor(props) {
         super(props);
+        const { justAdded } = this.props.route.params;
+        categoryItemsList = this.categorize(justAdded);
         this.state = {
-            categoryItemsList: DATA_DUMMY,
+            categoryItemsList: categoryItemsList,
         }
     }
 

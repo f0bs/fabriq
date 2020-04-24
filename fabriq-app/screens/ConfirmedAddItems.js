@@ -6,7 +6,7 @@ export default class ConfirmedAddItems extends Component {
 
     render() {
       const { navigate } = this.props.navigation;
-      const { numItems } = this.props.route.params;
+      const { items } = this.props.route.params;
       
       const successIconFilePath = "../assets/white-green-tick.jpeg"
 
@@ -18,7 +18,7 @@ export default class ConfirmedAddItems extends Component {
         </View>
 
         <View style = {styles.subtitle_container}>
-          <Text style = {styles.subtitle}>{`You have imported ${numItems} clothing item(s) into your wardrobe.`} </Text>
+          <Text style = {styles.subtitle}>{`You have imported ${items.length} clothing item(s) into your wardrobe.`} </Text>
         </View>
 
         <View style = {styles.icon_container}>
@@ -26,7 +26,7 @@ export default class ConfirmedAddItems extends Component {
 
         <TouchableOpacity
           style={styles.wardrobe_button}
-          onPress={() => navigate('Wardrobe')}  >
+          onPress={() => navigate('Wardrobe', {justAdded: items})}  >
           <Text style={styles.wardrobe_text}>Continue</Text>
         </TouchableOpacity>
         </View>

@@ -1,22 +1,37 @@
 import React, { Component } from 'react';
 import { View, Text, SafeAreaView, Image,
-    TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
+    TouchableOpacity, ScrollView, StyleSheet, StatusBar } from 'react-native';
 
 export default class ClothingDetail extends Component {
     render() {
       const { navigate } = this.props.navigation;
       const { item } = this.props.route.params;
-      console.log("here")
-      console.log(item.uri)
+
       return (
       <SafeAreaView style = {styles.container}>
-
+        <ScrollView
+          style={{ flex: 1 }}
+          contentContainerStyle={styles.scrollview}
+          scrollEnabled={true}
+          onContentSizeChange={this.onContentSizeChange}
+        >
         <View>
-        <Image
-        style={{width: 400, height: 400}} 
-        // style={styles.stretch}
-        source={{uri:item.uri}}
-      />
+            <Image style={styles.image_style} source={{uri:item.uri}}/>
+        </View>
+        
+        <View style = {styles.description_container}>
+            <Text style = {styles.category_text}>{item.category}</Text>
+            <View style = {{height: 5}}></View>
+            <Text style = {styles.name_text}>{item.name.full_name}</Text>
+            <View style = {{height: 30}}></View>
+            <Text style = {styles.subtext}>
+            Enjoy the beauty of italian cotton all over your body. 
+            This item will fit your body. 
+            This item will fit your body and warm you up all over and during spring. 
+            And over and over again, this is the text.
+            </Text>
+            <View style = {{height: 30}}></View>
+            <Text style = {styles.category_text}>Size</Text>
         </View>
 
 
@@ -25,7 +40,7 @@ export default class ClothingDetail extends Component {
           onPress={() => navigate('EmailsFound', {clothing_data: []})}  >
           <Text style={styles.skip_text}>Skip (testing for now)</Text>
         </TouchableOpacity>
-
+        </ScrollView>
       </SafeAreaView>
 
     )
@@ -35,18 +50,23 @@ export default class ClothingDetail extends Component {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'flex-start', 
-      alignItems: 'center',
-      backgroundColor: 'white'
+      backgroundColor: 'white',
     },
 
-    title_container: {
-        marginTop: '20%',
-        justifyContent: 'center', 
-        alignItems: 'center',
-        backgroundColor: 'white',
-        marginBottom: 10
-      },
+    description_container: {
+        marginHorizontal: '5%', 
+        marginTop: 20, 
+        textAlign: 'left',
+        flex: 1, 
+        flexGrow: 1,
+        width: '90%'
+    },
+
+    image_style: {
+        marginTop: 30,
+        paddingTop: '100%',
+        width: '100%',
+    },
 
       button: {
         // height: 45,
@@ -80,10 +100,22 @@ export default class ClothingDetail extends Component {
         color: "white", // "#0384fc" //"white",
       },
   
-    title: {
+    category_text: {
       color: 'black',
-      fontSize: 30,
+      fontSize: 20,
       fontFamily: 'Avenir-Medium'
     },
+
+    name_text: {
+        color: 'black',
+        fontSize: 40,
+        fontFamily: 'Avenir-Medium'
+      },
+
+      subtext: {
+        color: 'gray',
+        fontSize: 15,
+        fontFamily: 'Avenir'
+      },
     
   })
