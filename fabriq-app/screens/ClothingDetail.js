@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { View, Text, SafeAreaView, Image,
     TouchableOpacity, ScrollView, StyleSheet, StatusBar } from 'react-native';
 
+
 export default class ClothingDetail extends Component {
     render() {
       const { navigate } = this.props.navigation;
       const { item } = this.props.route.params;
+      const sizeList = ["XS", "S", "M", "L", 'XL', 'XXL']
 
       return (
       <SafeAreaView style = {styles.container}>
@@ -32,14 +34,22 @@ export default class ClothingDetail extends Component {
             </Text>
             <View style = {{height: 30}}></View>
             <Text style = {styles.category_text}>Size</Text>
+            <View style = {styles.size_container}> 
+              {sizeList.map((size) => {
+                // <View style = {styles.size_button}>
+                  <Text>{size}</Text>
+                // </View>
+              })}
+              
+            </View>
         </View>
 
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.button}
           onPress={() => navigate('EmailsFound', {clothing_data: []})}  >
           <Text style={styles.skip_text}>Skip (testing for now)</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         </ScrollView>
       </SafeAreaView>
 
@@ -51,6 +61,15 @@ export default class ClothingDetail extends Component {
     container: {
       flex: 1,
       backgroundColor: 'white',
+    },
+
+    size_container: {
+      flex: 1,
+      // flexDirection: 'row',
+      // width: '45%',
+      backgroundColor: 'white',
+      width: '90%',
+      marginTop: 25,
     },
 
     description_container: {
@@ -66,6 +85,12 @@ export default class ClothingDetail extends Component {
         marginTop: 30,
         paddingTop: '100%',
         width: '100%',
+    },
+
+    size_button: {
+      width: '10%',
+      height: '10%',
+      paddingTop: '20%'
     },
 
       button: {
