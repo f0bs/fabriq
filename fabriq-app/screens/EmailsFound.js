@@ -25,7 +25,7 @@ class ClothingList extends Component {
     } else {
       index = newSelectedItems.indexOf(itemStatus);
       if (index != -1)  {
-        delete newSelectedItems[index]
+        newSelectedItems.remove(index)
         this.setState({
           items: newSelectedItems
         })
@@ -33,13 +33,13 @@ class ClothingList extends Component {
     }
   }
     render() {
-      const { clothing_data, navigateFunc } = this.props;
+      const { clothing_data } = this.props;
 
         return (
             <FlatList
         data={clothing_data}
         renderItem={({ item }) => (
-          <ClothingCell item_cell = {item} refreshItemStatus = {this.refreshItemStatus.bind(this)} />
+          <ClothingCell item = {item} refreshItemStatus = {this.refreshItemStatus.bind(this)} />
         )}
         ItemSeparatorComponent={this.renderSeparator}
         ListFooterComponent={this.renderFooter}
@@ -61,13 +61,14 @@ class ClothingList extends Component {
       );
     };
 
-    confirmItems = (items, navigate) => {
-      console.log(items);
+    confirmItems() {
+      const { navigate } = this.props.navigation;
+      navigate('ConfirmedAddItems', {numItems: this.state.selectedItems.length})
     }
   
     renderFooter = () => {
       // if (!this.state.loading) return null;
-  
+
       return (
         <View
           style={{
@@ -78,10 +79,10 @@ class ClothingList extends Component {
           }}
         >
           <TouchableOpacity
-                onPress={this.confirmItems(this.state.items, this.props.navigateFunc)}
+                onPress={this.confirmItems.bind(this)}
                 style = {clothingStyles.continue_button}
                 >
-              <Text style={clothingStyles.add_button_text}> Continue </Text>
+              <Text style={clothingStyles.button_text}> Confirm </Text>
           </TouchableOpacity>
           {/* <ActivityIndicator animating size="large" /> */}
         </View>
@@ -109,7 +110,7 @@ class ClothingCell extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      item: this.props.item_cell,
+      item: this.props.item,
       added: false,
       textValue: 'Add Item',
       style: clothingStyles.add_button_unselected,
@@ -126,15 +127,14 @@ class ClothingCell extends Component {
         textValue: newTextValue,
         style: newStyle
       })
-
-      // const { item } = this.state;
-
-      // itemStatus = {itemId: item.id, selected: this.state.added}
-      // this.props.refreshItemStatus(itemStatus);
+      this.props.item["selected"] = !this.state.added
+      this.props.refreshItemStatus(this.props.item);
       
     }
 
     render() {
+      const item = this.state.item;
+
       return(
       <ListItem
             leftAvatar = {<Avatar large source={{uri: item.uri}} height={`75%`} width={`15%`}/>}
@@ -151,7 +151,7 @@ class ClothingCell extends Component {
                 ref = {this.addButton}
                 onPress={this.toggleAdd.bind(this)}
                 style= {this.state.style}>
-              <Text style={clothingStyles.add_button_text}> {this.state.textValue}</Text>
+              <Text style={clothingStyles.button_text}> {this.state.textValue}</Text>
              </TouchableOpacity>
             }
           />
@@ -162,7 +162,6 @@ class ClothingCell extends Component {
 export default class EmailsFound extends Component {
 
     render() {
-      const { goBack, navigate } = this.props.navigation;
 
     //   const clothing_array = this.props.navigation.state.params.clothing_data;
       
@@ -179,7 +178,7 @@ export default class EmailsFound extends Component {
         </View>
 
         <View style = {clothingStyles.clothinglist_container}>
-          <ClothingList clothing_data = { DATA_DUMMY } navigateFunc = { navigate } />
+          <ClothingList clothing_data = { DATA_DUMMY } navigation = { this.props.navigation } />
         </View>
 
       </SafeAreaView>
@@ -187,6 +186,12 @@ export default class EmailsFound extends Component {
     )
   }
 }
+
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
 
   const clothingStyles = StyleSheet.create({
     clothinglist_container: {
@@ -240,9 +245,9 @@ export default class EmailsFound extends Component {
 
 
 
-    add_button_text: {
+    button_text: {
       fontSize: FabriqStyle.BUTTON_FONT_SIZE,
-      fontWeight: '700',
+      fontWeight: '600',
       color: "white", // "#0384fc" //"white",
     },
 
