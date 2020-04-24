@@ -199,6 +199,6 @@ export default class ClothingDetail extends Component {
         color: 'gray',
         fontSize: 15,
         fontFamily: 'Avenir'
-      },
+      }
     
   })
