@@ -19,6 +19,12 @@ return (
         placeholder="emily.fabriq@gmail.com"/>
     </View>
 
+    <View style = {styles.password_container}>
+      <TextInput
+        style={styles.email_textinput}
+        placeholder="password"/>
+    </View>
+
     <View style = {styles.button_container}>
       <TouchableOpacity
           style={styles.authorize_button}
@@ -57,6 +63,12 @@ title_container: {
 
 email_container: {
   marginTop: 35,
+  justifyContent: 'center',
+  alignItems: 'center'
+},
+
+password_container: {
+  marginTop: 20,
   justifyContent: 'center',
   alignItems: 'center'
 },
