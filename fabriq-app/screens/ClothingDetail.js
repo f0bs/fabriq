@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, SafeAreaView, Image,
+    TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
 
-export default class FetchingEmails extends Component {
+export default class ClothingDetail extends Component {
     render() {
       const { navigate } = this.props.navigation;
-      
+      const { item } = this.props.route.params;
+      console.log("here")
+      console.log(item.uri)
       return (
       <SafeAreaView style = {styles.container}>
 
-        <View style = {styles.title_container}>
-          <Text style = {styles.title}> Fetching Emails </Text>
+        <View>
+        <Image
+        style={{width: 400, height: 400}} 
+        // style={styles.stretch}
+        source={{uri:item.uri}}
+      />
         </View>
 
-        <View style = {styles.activity_indicator_container}>
-          <ActivityIndicator size="large" color="#0384fc" />
-        </View>
 
         <TouchableOpacity
           style={styles.button}

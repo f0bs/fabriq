@@ -18,7 +18,7 @@ export default class ConfirmedAddItems extends Component {
         </View>
 
         <View style = {styles.subtitle_container}>
-          <Text style = {styles.subtitle}> {`You have imported ${numItems} clothing item(s) into your wardrobe.`} </Text>
+          <Text style = {styles.subtitle}>{`You have imported ${numItems} clothing item(s) into your wardrobe.`} </Text>
         </View>
 
         <View style = {styles.icon_container}>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
 
   subtitle_container: {
       marginTop: 10,
-      marginLeft: '3%',
+      marginLeft: '5%',
       width: '85%',
       justifyContent: 'center', 
       alignItems: 'center',
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   subtitle: {
       color: 'black',
       fontSize: 16,
-      fontFamily: 'Optima'
+      fontFamily: 'Avenir'
   },
 
   success_icon: {
