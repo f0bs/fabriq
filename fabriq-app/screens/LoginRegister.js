@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, Image } from 'react-native';
 import * as FabriqStyle from '../constants/style.js';
 import { GoogleSignin, statusCodes, GoogleSigninButton} from '@react-native-community/google-signin';
 
@@ -18,6 +18,13 @@ export default class LoginRegister extends Component {
         <View style = {styles.subtitle_container}>
           <Text style = {styles.subtitle}> Manage all your clothing in one platform </Text>
         </View>
+
+
+        {/* <Image
+        style={{height: 200, width: 200, marginTop: 60}}
+        source={require('../assets/standing-22.png')}
+      /> */}
+
 
         <View style = {styles.button_container}>
         <GoogleSigninButton style = {styles.google_button} 

@@ -4,10 +4,23 @@ import { View, Text, SafeAreaView, Image,
 
 
 export default class ClothingDetail extends Component {
+    constructor(props) {
+      super(props)
+      const sizeList = ["XS", "S", "M", "L", 'XL', 'XXL']
+      const selected = [false, false, true, false, false]
+
+      this.state = {
+        sizeList: sizeList,
+        buttonState: selected
+      }
+    }
+
+    toggleColor() {
+      console.log(selected)
+    }
     render() {
       const { navigate } = this.props.navigation;
       const { item } = this.props.route.params;
-      const sizeList = ["XS", "S", "M", "L", 'XL', 'XXL']
 
       return (
       <SafeAreaView style = {styles.container}>
@@ -35,21 +48,36 @@ export default class ClothingDetail extends Component {
             <View style = {{height: 30}}></View>
             <Text style = {styles.category_text}>Size</Text>
             <View style = {styles.size_container}> 
-              {sizeList.map((size) => {
-                // <View style = {styles.size_button}>
-                  <Text>{size}</Text>
-                // </View>
-              })}
+              {this.state.sizeList.map((size, i) => {
+                console.log(this.state)
+                if (this.state.buttonState[i]) {
+                  return (
+                    <View style = {styles.selected_size_button}>
+                      <Text style = {styles.selected_subtext}>{size}</Text>
+                  </View> 
+                  )
+                } else {
+                return(
+                  <View style = {styles.size_button}>
+                    <Text style = {styles.subtext}>{size}</Text>
+                  </View>
+
+                  // </TouchableOpacity>
+              )}})}
               
             </View>
+            <Text style = {styles.category_text}>Material: Cotton</Text>
+            <View style = {{height: 10}}></View>
+            <Text style = {styles.category_text}>Washing Instructions: Normal</Text>
         </View>
 
 
-        {/* <TouchableOpacity
+        <TouchableOpacity
           style={styles.button}
-          onPress={() => navigate('EmailsFound', {clothing_data: []})}  >
-          <Text style={styles.skip_text}>Skip (testing for now)</Text>
-        </TouchableOpacity> */}
+          onPress={() => {}}  >
+          <Text style={styles.skip_text}>Sell</Text>
+        </TouchableOpacity>
+
         </ScrollView>
       </SafeAreaView>
 
@@ -65,11 +93,14 @@ export default class ClothingDetail extends Component {
 
     size_container: {
       flex: 1,
-      // flexDirection: 'row',
-      // width: '45%',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
       backgroundColor: 'white',
       width: '90%',
+      marginLeft: '5%',
       marginTop: 25,
+      marginBottom: 25,
     },
 
     description_container: {
@@ -87,14 +118,41 @@ export default class ClothingDetail extends Component {
         width: '100%',
     },
 
+    selected_size_button: {
+      width: '12%', //'12%',
+      height: '93%', //'12%',
+      borderWidth: 1,
+      borderColor: '#03adfc',
+      backgroundColor: '#03adfc',
+      justifyContent: 'center',
+      alignItems: 'center',
+      textAlign: 'center',
+      paddingVertical: '4%', //'7%',
+      // paddingHorizontal: 5,
+      // paddingHorizontal: '50%', //'5%',
+      marginRight: '5%', 
+      // paddingTop: '20%'
+    },
+
+
     size_button: {
-      width: '10%',
-      height: '10%',
-      paddingTop: '20%'
+      width: '12%', //'12%',
+      height: '93%', //'12%',
+      borderWidth: 1,
+      borderColor: 'lightgray',
+      justifyContent: 'center',
+      alignItems: 'center',
+      textAlign: 'center',
+      paddingVertical: '4%', //'7%',
+      // paddingHorizontal: 5,
+      // paddingHorizontal: '50%', //'5%',
+      marginRight: '5%', 
+      // paddingTop: '20%'
     },
 
       button: {
-        // height: 45,
+        flex: 1,
+        marginLeft: '25%',
         marginTop: 40,
         marginBottom: 5,
         backgroundColor: "#03adfc", //"#03adfc",
@@ -102,13 +160,12 @@ export default class ClothingDetail extends Component {
         paddingVertical: 10,
         borderRadius: 5,
         height: 45,
-        // borderWidth: 2,
         textAlign: 'center',
         justifyContent: 'center',
-        alignContent: 'center',
-        width: '80%',
+        alignItems: 'center',
+        width: '50%',
         shadowOffset:{  width: 10,  height: 5,  },
-        shadowColor: 'black',
+        shadowColor: 'gray',
         shadowOpacity: 0.1,
       },
 
@@ -135,6 +192,12 @@ export default class ClothingDetail extends Component {
         color: 'black',
         fontSize: 40,
         fontFamily: 'Avenir-Medium'
+      },
+
+      selected_subtext: {
+        color: 'white',
+        fontSize: 15,
+        fontFamily: 'Avenir'
       },
 
       subtext: {
