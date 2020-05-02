@@ -3,6 +3,9 @@ import { FlatList, Text, StyleSheet,View,Image,SafeAreaView,TouchableOpacity } f
 import * as FabriqStyle from '../constants/style.js';
 
 export default class ItemDetail extends Component {
+    constructor(props) {
+        super(props)
+    }
     render() {
         const { navigate } = this.props.navigation;
         return (
@@ -13,15 +16,15 @@ export default class ItemDetail extends Component {
                     <Text style = {styles.title_main}> Product Detail </Text>
                 </View>
                 {/*white tee:  https: //www.team1newport.com/images/POTS211M_FTHG.jpg */}
-                <Image source = {{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMX-1BJYN4shWp9grSvA0-F6QyhVjWqneh10oA_h5DUzE63w0aj7y8CXUu2dUJuZO6m-GDyKM&usqp=CAc'}} 
+                <Image source = {{uri:this.props.route.params.rowData.uri}} 
                 style = {styles.image}>
                 </Image>
                 <View style = {styles.content}>
                     <Text style = {styles.category}>
-                        T-shirts
+                       {this.props.route.params.rowData.category}
                     </Text>
                     <Text style = {styles.name}>
-                        Patagonia Tee - MOUNTAIN DESIGN
+                        {this.props.route.params.rowData.name.full_name}
                     </Text>
                     <Text style = {styles.description}>
                         Enjoy the beauty of italian cotton all over your body.This item will fit your body.This item will 
@@ -35,7 +38,7 @@ export default class ItemDetail extends Component {
                         Enter your best offer and we will send it to users that own. They have 24h to accept your offer
                     </Text>
                     <Text style = {styles.sub_title}>
-                        Your Offer : $ 12
+                        Your Offer : {this.props.route.params.rowData.selling_price}
                     </Text>
 
                 </View>

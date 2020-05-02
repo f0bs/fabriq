@@ -40,7 +40,9 @@ export default class Market extends Component {
                 renderItem={({ item: rowData }) => {
                 return (
                     <TouchableOpacity
-                        onPress={() => navigate('ItemDetail')}  >
+                        onPress={() => navigate('ItemDetail',{
+                            rowData
+                        })}  >
                         <Card
                             image={{ uri: rowData.uri }}
                             imageStyle = {styles.image}
@@ -219,6 +221,7 @@ const styles = StyleSheet.create({
 
 const data = [{
         id: 'emily-1',
+        category: 'T-shirt',
         name: {
             brand: 'Patagonia',
             style: 'P-6 Logo Tee',
@@ -232,6 +235,7 @@ const data = [{
 
     {
         id: 'emily-2',
+        category: 'Coat',
         name: {
             brand: 'J.CREW',
             style: 'Village Coat',
@@ -245,6 +249,7 @@ const data = [{
 
     {
         id: 'emily-3',
+        category: 'Hoodie',
         name: {
             brand: 'A&F',
             style: 'Icon Hoodie',
