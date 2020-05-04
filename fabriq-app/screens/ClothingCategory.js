@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react';
-import { ScrollView, View, Text, SafeAreaView, FlatList, TouchableOpacity,Image, ActivityIndicator, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, SafeAreaView, FlatList, TouchableOpacity,TouchableWithoutFeedback,Image, ActivityIndicator, StyleSheet } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements'
 import * as FabriqStyle from '../constants/style.js';
 
@@ -80,9 +80,9 @@ export default class ClothingCategory extends Component {
           <ClothingCategoryList clothing_data = { items } navigate = { navigate } />
         </View>
 
-        < TouchableOpacity onPress={() => navigate('Market')}>
+        < TouchableWithoutFeedback onPress={() => navigate('Market')}>
                 <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
 
       </SafeAreaView>
 

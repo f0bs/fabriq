@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text, Image, SafeAreaView, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, Image, SafeAreaView, TouchableOpacity,TouchableWithoutFeedback, ActivityIndicator, StyleSheet,Alert } from 'react-native';
 import * as FabriqStyle from '../constants/style.js';
 
 export default class ConfirmedOffer extends Component {
   constructor(props) {
     super(props)
   }
+  
 
     render() {
+      // delay for 8 seconds
+      setTimeout(() => {
+        Alert.alert("You have received an offer for your clothing item");
+        navigate('ApprovedOffer',{itemData:data.itemData})
+      }, 8000);
+
       const { navigate } = this.props.navigation;
       const data = this.props.route.params;
       
@@ -37,9 +44,9 @@ export default class ConfirmedOffer extends Component {
           <Text style={styles.wardrobe_text}>Find more items</Text>
         </TouchableOpacity>
         </View>
-        < TouchableOpacity onPress={() => navigate('Market')}>
+        < TouchableWithoutFeedback onPress={() => navigate('Market')}>
                 <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
 
       </SafeAreaView>
 

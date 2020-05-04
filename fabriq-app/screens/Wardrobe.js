@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, SafeAreaView, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, Image, SafeAreaView, TouchableOpacity, TouchableWithoutFeedback,ActivityIndicator, StyleSheet } from 'react-native';
 import { Card, CardItem } from 'react-native-elements';
 import * as FabriqStyle from '../constants/style.js';
 import Images from '../images/images.js';
@@ -69,9 +69,9 @@ export default class Wardrobe extends Component {
 }
 
         </View>
-        < TouchableOpacity onPress={() => navigate('Market')}>
+        < TouchableWithoutFeedback onPress={() => navigate('Market')}>
           <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
 
       </SafeAreaView>
 

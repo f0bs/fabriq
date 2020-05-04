@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, SafeAreaView, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, Image, SafeAreaView, TouchableOpacity, ActivityIndicator, StyleSheet,TouchableWithoutFeedback } from 'react-native';
 import * as FabriqStyle from '../constants/style.js';
 
 export default class OrderCompleted extends Component {
@@ -37,9 +37,9 @@ export default class OrderCompleted extends Component {
           <Text style={styles.wardrobe_text}>Track your order</Text>
         </TouchableOpacity>
         </View>
-        < TouchableOpacity onPress={() => navigate('Market')}>
+        < TouchableWithoutFeedback onPress={() => navigate('Market')}>
                 <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
 
       </SafeAreaView>
 

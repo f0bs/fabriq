@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, SafeAreaView, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, Image, SafeAreaView, TouchableOpacity,TouchableWithoutFeedback, ActivityIndicator, StyleSheet } from 'react-native';
 import * as FabriqStyle from '../constants/style.js';
 
 export default class ApprovedOffer extends Component {
@@ -37,9 +37,9 @@ export default class ApprovedOffer extends Component {
           <Text style={styles.wardrobe_text}>Go to checkout</Text>
         </TouchableOpacity>
         </View>
-        < TouchableOpacity onPress={() => navigate('Market')}>
+        < TouchableWithoutFeedback onPress={() => navigate('Market')}>
                 <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
-        </TouchableOpacity>
+        </TouchableWithoutFeedback>
 
       </SafeAreaView>
 
@@ -115,7 +115,8 @@ const styles = StyleSheet.create({
   },
   message:{
       marginTop:20,
-      color:'black'
+      color:'black',
+      fontSize: 18
   }, 
   navbar: {
       height: 60,

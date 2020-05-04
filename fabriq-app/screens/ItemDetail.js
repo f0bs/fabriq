@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FlatList, Text, StyleSheet,View,Image,SafeAreaView,TouchableOpacity } from "react-native";
+import { FlatList, Text, StyleSheet,View,Image,SafeAreaView,TouchableOpacity,TouchableWithoutFeedback } from "react-native";
 import * as FabriqStyle from '../constants/style.js';
 
 export default class ItemDetail extends Component {
@@ -27,9 +27,7 @@ export default class ItemDetail extends Component {
                         {this.props.route.params.rowData.name.full_name}
                     </Text>
                     <Text style = {styles.description}>
-                        Enjoy the beauty of italian cotton all over your body.This item will fit your body.This item will 
-
-                        And over and over again, this is the text.
+                        Enjoy the beauty of italian cotton all over your body.This item will fit your body.
                     </Text>
                     <Text style = {styles.sub_title}>
                         Make Your Offer
@@ -49,9 +47,9 @@ export default class ItemDetail extends Component {
                         })}  >
                     <Text style={styles.button_text}>Send an Offer</Text>
                 </TouchableOpacity>
-                < TouchableOpacity onPress={() => navigate('Market')}>
+                < TouchableWithoutFeedback onPress={() => navigate('Market')}>
                         <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
-                </TouchableOpacity>
+                </TouchableWithoutFeedback>
             </ SafeAreaView>
         
         );
@@ -138,6 +136,6 @@ const styles = StyleSheet.create({
         height: 60,
         width: 400,
         marginLeft: 5,
-        marginTop: -5
+        marginTop: 10
     }
 });
