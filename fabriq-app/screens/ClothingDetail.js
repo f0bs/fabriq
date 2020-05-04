@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, Image,
-    TouchableOpacity, ScrollView, StyleSheet, StatusBar } from 'react-native';
-
+import { Dimensions, View, Text, SafeAreaView, Image,
+    TouchableOpacity, ScrollView, StyleSheet, 
+    Animated, StatusBar } from 'react-native';
+// import Modal, { ModalFooter, ModalButton, ModalContent } from 'react-native-modals';
 
 export default class ClothingDetail extends Component {
     constructor(props) {
@@ -11,15 +12,19 @@ export default class ClothingDetail extends Component {
 
       this.state = {
         sizeList: sizeList,
-        buttonState: selected
+        buttonState: selected,
+        visible: false,
       }
     }
+
+
     render() {
       const { navigate } = this.props.navigation;
       const { item } = this.props.route.params;
 
       return (
       <SafeAreaView style = {styles.container}>
+
         <ScrollView
           style={{ flex: 1 }}
           contentContainerStyle={styles.scrollview}
@@ -69,11 +74,12 @@ export default class ClothingDetail extends Component {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => {}}  >
+          onPress={ () => navigate('SellItem', {item: item}) } >
           <Text style={styles.skip_text}>Sell</Text>
         </TouchableOpacity>
 
         </ScrollView>
+              
       </SafeAreaView>
 
     )
@@ -84,6 +90,64 @@ export default class ClothingDetail extends Component {
     container: {
       flex: 1,
       backgroundColor: 'white',
+    },
+
+    cover: {
+      backgroundColor: "rgba(0,0,0,.5)",
+    },
+
+    sheet: {
+      position: "absolute",
+      top: Dimensions.get("window").height,
+      left: 0,
+      right: 0,
+      height: "100%",
+      justifyContent: "flex-end",
+    },
+    popup: {
+      backgroundColor: "#FFF",
+      marginHorizontal: 10,
+      borderTopLeftRadius: 5,
+      borderTopRightRadius: 5,
+      minHeight: 80,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+
+    overlay: {
+      backgroundColor: 'rgba(0,0,0,0.2)',
+      flex: 1,
+      justifyContent: 'flex-end',
+    },
+
+    animated_container: {
+      backgroundColor: 'white',
+      paddingTop: 12,
+      borderTopRightRadius: 12,
+      borderTopLeftRadius: 12,
+    },
+
+    modalContainer: {
+      // marginTop: '60%',
+      opacity : 0.8,
+      flex: 1,
+      // width: '100%',
+      // height: '50%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 4,
+      borderColor: 'rgba(0, 0, 0, 0.1)',
+    },
+
+    modal_content: {
+      paddingTop: '80%',
+      height: 100,
+      width: 300,
+      // opacity : 1.0,
+      // width: 2400,
+      // flex: 1,
+      // justifyContent: 'center',
+      // alignItems: 'center',
     },
 
     size_container: {
