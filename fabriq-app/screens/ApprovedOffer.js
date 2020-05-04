@@ -34,7 +34,7 @@ export default class ApprovedOffer extends Component {
           style={styles.wardrobe_button}
           // onPress={() => navigate('Wardrobe')}  >
           onPress={() => navigate('ShoppingCart',{itemData:data.itemData})}  >
-          <Text style={styles.wardrobe_text}>Go to checkout</Text>
+          <Text style={styles.wardrobe_text}>Go to shopping cart</Text>
         </TouchableOpacity>
         </View>
         < TouchableWithoutFeedback onPress={() => navigate('Market')}>
