@@ -234,7 +234,7 @@ Array.prototype.remove = function(from, to) {
         height: 60,
         width:400,
         marginLeft: 5,
-        marginTop:560
+        marginTop:550
     }
     
   })

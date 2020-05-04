@@ -44,8 +44,13 @@ export default class ItemDetail extends Component {
                 </View>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => navigate('ConfirmedOffer')}  >
+                    onPress={() => navigate('ConfirmedOffer',{
+                        itemData:this.props.route.params.rowData
+                        })}  >
                     <Text style={styles.button_text}>Send an Offer</Text>
+                </TouchableOpacity>
+                < TouchableOpacity onPress={() => navigate('Market')}>
+                        <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
                 </TouchableOpacity>
             </ SafeAreaView>
         
@@ -129,4 +134,10 @@ const styles = StyleSheet.create({
       shadowColor: 'black',
       shadowOpacity: 0.1,
     },
+    navbar: {
+        height: 60,
+        width: 400,
+        marginLeft: 5,
+        marginTop: -5
+    }
 });

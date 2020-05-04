@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, SafeAreaView, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
 import * as FabriqStyle from '../constants/style.js';
 
-export default class ConfirmedOffer extends Component {
+export default class OrderCompleted extends Component {
   constructor(props) {
     super(props)
   }
@@ -23,18 +23,18 @@ export default class ConfirmedOffer extends Component {
         <View style = {styles.icon_container}>
         <Image source={require(successIconFilePath)}  style = {styles.success_icon} />
             <View>
-      <Text style = {styles.title}> Your {data.itemData.selling_price} Offer sent! </Text>
+      <Text style = {styles.title}> Order Complted </Text>
                 
             </View>
             <View>
-                <Text style = {styles.message}> Sells now have 24h to accept your offer </Text>
+                <Text style = {styles.message}> Your {data.itemData.selling_price} order is on the way! </Text>
             </View>
 
         <TouchableOpacity
           style={styles.wardrobe_button}
           // onPress={() => navigate('Wardrobe')}  >
-          onPress={() => navigate('ApprovedOffer',{itemData:data.itemData})}  >
-          <Text style={styles.wardrobe_text}>Find more items</Text>
+          onPress={() => navigate('Market')}  >
+          <Text style={styles.wardrobe_text}>Track your order</Text>
         </TouchableOpacity>
         </View>
         < TouchableOpacity onPress={() => navigate('Market')}>
@@ -115,12 +115,13 @@ const styles = StyleSheet.create({
   },
   message:{
       marginTop:20,
-      color:'grey'
+      color:'black'
   }, 
   navbar: {
-    height: 60,
-    width: 400,
-    marginLeft: 5,
-    marginTop: 80
+      height: 60,
+      width: 400,
+      marginLeft: 5,
+      marginTop: 80
   }
 })
+
