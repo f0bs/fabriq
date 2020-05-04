@@ -14,7 +14,8 @@ export default class ShoppingCart extends Component {
     render() {
       const { navigate } = this.props.navigation;
       const data = this.props.route.params;
-      const result = Number(data.itemData.selling_price.replace(/\$/g, ''))+5.99;
+      let result = Number(data.itemData.selling_price.replace(/\$/g, ''))+5.99;
+      result = result.toFixed(2);
 
       return (
         <SafeAreaView style = {styles.container}>
@@ -50,7 +51,7 @@ export default class ShoppingCart extends Component {
                 </Text>
                 <Text style = {styles.priceText}>  Delivery:                                               $5.99 
                 </Text>
-                <Text style = {styles.priceText}>  Total order:                                         ${result} 
+                <Text style = {styles.priceText}>  Total order:                                          ${result} 
                 </Text>
             </View>
 
