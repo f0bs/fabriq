@@ -12,7 +12,7 @@ export default class ConfirmedOffer extends Component {
       // delay for 8 seconds
       setTimeout(() => {
         Alert.alert("You have received an offer for your clothing item");
-        navigate('ApprovedOffer',{itemData:data.itemData})
+        navigate('ApprovedOffer',{itemData:data.itemData,offerPrice:data.offerPrice})
       }, 8000);
 
       const { navigate } = this.props.navigation;
@@ -30,7 +30,7 @@ export default class ConfirmedOffer extends Component {
         <View style = {styles.icon_container}>
         <Image source={require(successIconFilePath)}  style = {styles.success_icon} />
             <View>
-      <Text style = {styles.title}> Your {data.itemData.selling_price} Offer sent! </Text>
+      <Text style = {styles.title}> Your ${data.offerPrice} Offer sent! </Text>
                 
             </View>
             <View>
@@ -40,7 +40,7 @@ export default class ConfirmedOffer extends Component {
         <TouchableOpacity
           style={styles.wardrobe_button}
           // onPress={() => navigate('Wardrobe')}  >
-          onPress={() => navigate('ApprovedOffer',{itemData:data.itemData})}  >
+          onPress={() => navigate('ApprovedOffer',{itemData:data.itemData,offerPrice:data.offerPrice})}  >
           <Text style={styles.wardrobe_text}>Find more items</Text>
         </TouchableOpacity>
         </View>

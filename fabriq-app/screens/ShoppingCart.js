@@ -14,7 +14,8 @@ export default class ShoppingCart extends Component {
     render() {
       const { navigate } = this.props.navigation;
       const data = this.props.route.params;
-      let result = Number(data.itemData.selling_price.replace(/\$/g, ''))+5.99;
+      let currentPrice = Number(data.offerPrice).toFixed(2);
+      let result = Number(currentPrice.replace(/\$/g, '')) + 5.99;
       result = result.toFixed(2);
 
       return (
@@ -31,7 +32,7 @@ export default class ShoppingCart extends Component {
             <ListItem
                 leftAvatar = {<Avatar large source={{uri: data.itemData.uri}} height={`90%`} width={`20%`}/>}
                 title={` ${data.itemData.name.full_name}  \n`}
-                rightTitle = {`${data.itemData.selling_price}`}
+                rightTitle = {`${currentPrice}`}
                 rightTitleStyle = {clothingStyles.right_title_style}
                 titleNumberOfLines = {2}
                 titleStyle = {clothingStyles.title_style}
@@ -47,7 +48,7 @@ export default class ShoppingCart extends Component {
 
         <View style = {styles.icon_container}>
             <View style = {styles.price}>
-                <Text style = {styles.priceText}>  Order:                                                   {data.itemData.selling_price} 
+                <Text style = {styles.priceText}>  Order:                                                   ${currentPrice} 
                 </Text>
                 <Text style = {styles.priceText}>  Delivery:                                               $5.99 
                 </Text>

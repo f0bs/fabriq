@@ -27,13 +27,13 @@ export default class ApprovedOffer extends Component {
                 
             </View>
             <View>
-                <Text style = {styles.message}> Your {data.itemData.selling_price} offer has been accepted! </Text>
+                <Text style = {styles.message}> Your ${data.offerPrice} offer has been accepted! </Text>
             </View>
 
         <TouchableOpacity
           style={styles.wardrobe_button}
           // onPress={() => navigate('Wardrobe')}  >
-          onPress={() => navigate('ShoppingCart',{itemData:data.itemData})}  >
+          onPress={() => navigate('ShoppingCart',{itemData:data.itemData,offerPrice:data.offerPrice})}  >
           <Text style={styles.wardrobe_text}>Go to shopping cart</Text>
         </TouchableOpacity>
         </View>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     marginLeft:'5%',
     height: 45,
     borderRadius: 5,
-    width: '70%',
+    width: '80%',
     textAlign: 'center',
     shadowOffset:{  width: 10,  height: 5,  },
     shadowColor: 'gray',

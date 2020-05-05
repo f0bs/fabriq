@@ -23,7 +23,7 @@ export default class OrderCompleted extends Component {
         <View style = {styles.icon_container}>
         <Image source={require(successIconFilePath)}  style = {styles.success_icon} />
             <View>
-      <Text style = {styles.title}> Order Complted </Text>
+      <Text style = {styles.title}> Order Completed </Text>
                 
             </View>
             <View>
@@ -34,7 +34,7 @@ export default class OrderCompleted extends Component {
           style={styles.wardrobe_button}
           // onPress={() => navigate('Wardrobe')}  >
           onPress={() => navigate('Market')}  >
-          <Text style={styles.wardrobe_text}>Track your order</Text>
+          <Text style={styles.wardrobe_text}>Track order</Text>
         </TouchableOpacity>
         </View>
         < TouchableWithoutFeedback onPress={() => navigate('Market')}>

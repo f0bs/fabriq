@@ -1,17 +1,26 @@
 import React, { Component } from "react";
-import { FlatList, Text, StyleSheet,View,Image,SafeAreaView,TouchableOpacity,TouchableWithoutFeedback } from "react-native";
+import { FlatList, Text, StyleSheet,View,Image,SafeAreaView,TouchableOpacity,TouchableWithoutFeedback,TextInput,ScrollView, Alert } from "react-native";
 import * as FabriqStyle from '../constants/style.js';
 
 export default class ItemDetail extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        state = {offerPrice: ''};
     }
+    state = {
+        offerPrice: ''
+    };
+
+
     render() {
         const { navigate } = this.props.navigation;
+        
+
         return (
             < SafeAreaView style = {
                 styles.container
             } >
+                < ScrollView >
                 <View style = {styles.title_container}>
                     <Text style = {styles.title_main}> Product Detail </Text>
                 </View>
@@ -36,20 +45,31 @@ export default class ItemDetail extends Component {
                         Enter your best offer and we will send it to users that own. They have 24h to accept your offer
                     </Text>
                     <Text style = {styles.sub_title}>
-                        Your Offer : {this.props.route.params.rowData.selling_price}
+                        Min price : {this.props.route.params.rowData.selling_price}
                     </Text>
+                    <Text style = {styles.sub_title}>
+                        Your Offer : $
+                    </Text>
+                    <TextInput 
+                        style = {styles.input}
+                        value = {this.state.offerPrice}
+                        onChangeText = {offerPrice => this.setState({offerPrice})}
+                        />
 
                 </View>
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => navigate('ConfirmedOffer',{
-                        itemData:this.props.route.params.rowData
-                        })}  >
+                        itemData:this.props.route.params.rowData,
+                        offerPrice: this.state.offerPrice
+                        })}
+                    disabled={Number(this.state.offerPrice) <= Number(this.props.route.params.rowData.selling_price)}  >
                     <Text style={styles.button_text}>Send an Offer</Text>
                 </TouchableOpacity>
                 < TouchableWithoutFeedback onPress={() => navigate('Market')}>
                         <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
                 </TouchableWithoutFeedback>
+                </ScrollView>
             </ SafeAreaView>
         
         );
@@ -79,7 +99,7 @@ const styles = StyleSheet.create({
     },
     image:{
         width:400,
-        height:400,
+        height:380,
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft:5
@@ -92,7 +112,8 @@ const styles = StyleSheet.create({
     category:{
         fontFamily: 'Avenir',
         fontSize: 18,
-        fontWeight: '600'
+        fontWeight: '600',
+        marginTop:-15
     },
     name:{
         color: 'black',
@@ -118,7 +139,7 @@ const styles = StyleSheet.create({
       marginLeft:5
     },
     button: {
-      marginTop: 15,
+      marginTop: 10,
       marginBottom: 5,
       backgroundColor: FabriqStyle.LIGHTBLUE, //"#03adfc",
       paddingHorizontal: '20%',
@@ -137,5 +158,14 @@ const styles = StyleSheet.create({
         width: 400,
         marginLeft: 5,
         marginTop: 10
+    },
+    input: {
+        height: 30,
+        borderColor: '#E4E4E4',
+        borderWidth: 1,
+        width: 60,
+        marginLeft:100,
+        marginTop:-30,
+        textAlign:"center"
     }
 });
