@@ -40,7 +40,7 @@ export default class ItemPutOnSale extends Component {
         
         <View style = {styles.condition_container}>
             <View style = {styles.name_container}>
-                <Text style = {styles.category_text}>{item.name.full_name}</Text>
+                <Text style = {styles.category_text}>{item.full_name}</Text>
             </View> 
             
             <View style = {{height: 35}}></View>

@@ -48,7 +48,7 @@ class ClothingCategoryCell extends Component {
       
       <ListItem
             leftAvatar = {<Avatar large source={{uri: item.uri}} height={`90%`} width={`15%`}/>}
-            title={` ${item.name.full_name} \n ${item.purchase_price} \n`}
+            title={` ${item.full_name} \n ${item.purchase_price} \n`}
             titleNumberOfLines = {2}
             titleStyle = {clothingStyles.title_style}
             titleContainerStyle = {clothingStyles.title_container}
@@ -234,7 +234,7 @@ Array.prototype.remove = function(from, to) {
         height: 60,
         width:400,
         marginLeft: 5,
-        marginTop:550
+        marginTop:530
     }
     
   })

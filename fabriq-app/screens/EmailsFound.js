@@ -274,7 +274,8 @@ Array.prototype.remove = function(from, to) {
     title_style: {
       color: 'black',
       fontSize: 15,
-      fontFamily: 'Avenir-Medium'
+      fontFamily: 'Avenir-Medium',
+      width:180
     },
 
     subtitle_style: {

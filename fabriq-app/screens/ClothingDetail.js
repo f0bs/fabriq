@@ -38,7 +38,7 @@ export default class ClothingDetail extends Component {
         <View style = {styles.description_container}>
             <Text style = {styles.category_text}>{item.category}</Text>
             <View style = {{height: 5}}></View>
-            <Text style = {styles.name_text}>{item.name.full_name}</Text>
+            <Text style = {styles.name_text}>{item.full_name}</Text>
             <View style = {{height: 30}}></View>
             <Text style = {styles.subtext}>
             Enjoy the beauty of italian cotton all over your body. 

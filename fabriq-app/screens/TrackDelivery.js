@@ -1,41 +1,29 @@
 import React, { Component } from 'react';
-import { View, Text, Image, SafeAreaView, TouchableOpacity, ActivityIndicator, StyleSheet,TouchableWithoutFeedback } from 'react-native';
+import { View, Text, Image, SafeAreaView, TouchableOpacity,TouchableWithoutFeedback, ActivityIndicator, StyleSheet,Alert } from 'react-native';
 import * as FabriqStyle from '../constants/style.js';
 
-export default class OrderCompleted extends Component {
+export default class TrackDelivery extends Component {
   constructor(props) {
     super(props)
   }
+  
 
     render() {
+
       const { navigate } = this.props.navigation;
-      const data = this.props.route.params;
       
-      const successIconFilePath = "../assets/white-green-tick.jpeg";
+      const trackStatusFilePath = "../assets/trackOrder.png";
 
       return (
         <SafeAreaView style = {styles.container}>
 
         <View style = {styles.title_container}>
-          <Text style = {styles.title}> {data.itemData.name.full_name} </Text>
+          <Text style = {styles.title}> Your Sellings </Text>
         </View>
 
-        <View style = {styles.icon_container}>
-        <Image source={require(successIconFilePath)}  style = {styles.success_icon} />
-            <View>
-      <Text style = {styles.title}> Order Completed </Text>
-                
-            </View>
-            <View>
-                <Text style = {styles.message}> Your ${data.offerPrice} order is on the way! </Text>
-            </View>
+        <View style = {styles.image_container}>
+        <Image source={require(trackStatusFilePath)}  style = {styles.image} />
 
-        <TouchableOpacity
-          style={styles.wardrobe_button}
-          // onPress={() => navigate('Wardrobe')}  >
-          onPress={() => navigate('TrackDelivery')}  >
-          <Text style={styles.wardrobe_text}>Track order</Text>
-        </TouchableOpacity>
         </View>
         < TouchableWithoutFeedback onPress={() => navigate('Market')}>
                 <Image source={require('../assets/navbar.png')} style={styles.navbar} resizeMode="stretch"></Image>
@@ -65,7 +53,7 @@ const styles = StyleSheet.create({
       marginBottom: 10
   },
 
-  icon_container: {
+  image_container: {
     marginLeft: '5%',
     width: '85%',
     marginTop: '10%',
@@ -87,9 +75,9 @@ const styles = StyleSheet.create({
       fontFamily: 'Optima'
   },
 
-  success_icon: {
-    width: '50%',
-    height: 200,
+ image: {
+    width: '100%',
+    height: 400,
   },
 
   wardrobe_text: {
@@ -115,13 +103,12 @@ const styles = StyleSheet.create({
   },
   message:{
       marginTop:20,
-      color:'black'
+      color:'grey'
   }, 
   navbar: {
-      height: 60,
-      width: 400,
-      marginLeft: 5,
-      marginTop: 80
+    height: 60,
+    width: 400,
+    marginLeft: 5,
+    marginTop: 240
   }
 })
-

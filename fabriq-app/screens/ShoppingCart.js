@@ -59,7 +59,7 @@ export default class ShoppingCart extends Component {
             <TouchableOpacity
             style={styles.wardrobe_button}
             // onPress={() => navigate('Wardrobe')}  >
-            onPress={() => navigate('OrderCompleted',{itemData:data.itemData})}  >
+            onPress={() => navigate('OrderCompleted',{itemData:data.itemData,offerPrice:data.offerPrice})}  >
             <Text style={styles.wardrobe_text}>Go to checkout</Text>
             </TouchableOpacity>
         </View>

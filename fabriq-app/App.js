@@ -16,6 +16,7 @@ import ClothingDetail from './screens/ClothingDetail'
 import ShoppingCart from './screens/ShoppingCart'
 import SellItem from './screens/SellItem'
 import ItemPutOnSale from './screens/ItemPutOnSale'
+import TrackDelivery from './screens/TrackDelivery'
 import { NavigationContainer, HeaderBackButton } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -46,6 +47,7 @@ export default class App extends Component {
           <Stack.Screen name = "ShoppingCart" component = {ShoppingCart} options={{ headerShown: false }}/>
           <Stack.Screen name = "SellItem" component = {SellItem} options={{ headerShown: false }} />
           <Stack.Screen name = "ItemPutOnSale" component = {ItemPutOnSale} options={{ headerShown: false }} />
+          <Stack.Screen name = "TrackDelivery" component = {TrackDelivery} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
     )
