@@ -23,7 +23,8 @@ export default class ItemPutOnSale extends Component {
     render() {
       const { navigate } = this.props.navigation;
       const { item } = this.props.route.params;
-      const successIconFilePath = "../assets/white-green-tick.jpeg"
+      const successIconFilePath = "../assets/white-green-tick.jpeg";
+      const price = Number(item.purchase_price.replace(/\$/g, '')) * 0.5;
 
       return (
         <SafeAreaView style = {styles.container}>
@@ -47,13 +48,13 @@ export default class ItemPutOnSale extends Component {
         
         <View style = {styles.description_container}>
             <Text style = {styles.condition_text}>
-                Your clothing item has a min price of:
+                Your clothing item has a estimated value of:
             </Text>
 
             <View style = {{height: 20}}></View>
 
             <Text style = {styles.price_text}>
-                $12
+                ${price}
             </Text>
         </View>
         </View>

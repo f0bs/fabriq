@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, SafeAreaView, TouchableOpacity,Image, ActivityIndicator, StyleSheet } from 'react-native';
 
 export default class FetchingEmails extends Component {
   
@@ -22,21 +22,30 @@ export default class FetchingEmails extends Component {
   componentDidMount() {
     const { navigate } = this.props.navigation;
 
-    fetch('http://fabriqapi.herokuapp.com/data')
-      .then((response) => response.json())
-      .then((json) => {
-        this.parse_json(json);
-      })
-      .then(() => { this.setState({ isLoading: false });})
-      .catch((error) => console.error(error))
-      .finally(() => {
-        navigate('EmailsFound', {clothing_array: this.state.data});
-      });
+    setTimeout(() => {
+      fetch('http://fabriqapi.herokuapp.com/data')
+        .then((response) => response.json())
+        .then((json) => {
+          this.parse_json(json);
+        })
+        .then(() => {
+          this.setState({
+            isLoading: false
+          });
+        })
+        .catch((error) => console.error(error))
+        .finally(() => {
+          navigate('EmailsFound', {
+            clothing_array: this.state.data
+          });
+        });
+    }, 2000);
   }
 
     render() {
     
       const { navigate } = this.props.navigation;
+      const loadingIconFilePath = "../assets/loading.png";
 
       return (
       <SafeAreaView style = {styles.container}>
@@ -45,11 +54,13 @@ export default class FetchingEmails extends Component {
           <Text style = {styles.title}> Fetching Emails </Text>
         </View>
 
-        <View style = {height = 30}></View>
 
         <View style = {styles.activity_indicator_container}>
           <ActivityIndicator size="large" color="#0384fc" animating = {this.state.isLoading} />
         </View>
+        {/* <View> */}
+          <Image source={require(loadingIconFilePath)}  style = {styles.success_icon} />
+        {/* </View> */}
 
         {/* <TouchableOpacity
           style={styles.button}
@@ -116,5 +127,10 @@ export default class FetchingEmails extends Component {
       fontSize: 30,
       fontFamily: 'Avenir-Medium'
     },
+  success_icon: {
+    width: '50%',
+    height: 300,
+    marginTop:30
+  }
     
   })

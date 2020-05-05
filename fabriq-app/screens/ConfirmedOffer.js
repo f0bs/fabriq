@@ -11,7 +11,7 @@ export default class ConfirmedOffer extends Component {
     render() {
       // delay for 8 seconds
       setTimeout(() => {
-        Alert.alert("You have received an offer for your clothing item");
+        Alert.alert("Your offer has been accepted");
         navigate('ApprovedOffer',{itemData:data.itemData,offerPrice:data.offerPrice})
       }, 8000);
 
@@ -34,7 +34,7 @@ export default class ConfirmedOffer extends Component {
                 
             </View>
             <View>
-                <Text style = {styles.message}> Sells now have 24h to accept your offer </Text>
+                <Text style = {styles.message}> Sellers now have 24h to accept your offer </Text>
             </View>
 
         <TouchableOpacity

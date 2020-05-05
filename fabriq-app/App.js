@@ -19,14 +19,18 @@ import ItemPutOnSale from './screens/ItemPutOnSale'
 import TrackDelivery from './screens/TrackDelivery'
 import { NavigationContainer, HeaderBackButton } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import {YellowBox} from 'react-native';
 
 const Stack = createStackNavigator();
 
 const navigationOptions = ({ navigation }) => ({
   headerLeft: <HeaderBackButton onPress={() => navigation.goBack()} />,
 })
+YellowBox.ignoreWarnings(['Warning: ReactNative.createElement']);
+console.disableYellowBox = true;
 
 export default class App extends Component {
+
   render() {
     return (
       <NavigationContainer>

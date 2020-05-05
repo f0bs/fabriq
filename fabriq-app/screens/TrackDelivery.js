@@ -18,7 +18,7 @@ export default class TrackDelivery extends Component {
         <SafeAreaView style = {styles.container}>
 
         <View style = {styles.title_container}>
-          <Text style = {styles.title}> Your Sellings </Text>
+          <Text style = {styles.title}> Your Orders </Text>
         </View>
 
         <View style = {styles.image_container}>
