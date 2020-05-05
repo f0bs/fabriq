@@ -2,9 +2,42 @@ import React, { Component } from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, ActivityIndicator, StyleSheet } from 'react-native';
 
 export default class FetchingEmails extends Component {
+  
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+      isLoading: true
+    };
+  }
+
+  parse_json(json) {
+    var result = [];
+    for(var i in json)
+      result.push(json [i]);
+    this.setState({ data: result })
+  }
+
+  componentDidMount() {
+    const { navigate } = this.props.navigation;
+
+    fetch('http://fabriqapi.herokuapp.com/data')
+      .then((response) => response.json())
+      .then((json) => {
+        this.parse_json(json);
+      })
+      .then(() => { this.setState({ isLoading: false });})
+      .catch((error) => console.error(error))
+      .finally(() => {
+        navigate('EmailsFound', {clothing_array: this.state.data});
+      });
+  }
+
     render() {
+    
       const { navigate } = this.props.navigation;
-      
+
       return (
       <SafeAreaView style = {styles.container}>
 
@@ -12,15 +45,17 @@ export default class FetchingEmails extends Component {
           <Text style = {styles.title}> Fetching Emails </Text>
         </View>
 
+        <View style = {height = 30}></View>
+
         <View style = {styles.activity_indicator_container}>
-          <ActivityIndicator size="large" color="#0384fc" />
+          <ActivityIndicator size="large" color="#0384fc" animating = {this.state.isLoading} />
         </View>
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.button}
           onPress={() => navigate('EmailsFound', {clothing_data: []})}  >
           <Text style={styles.skip_text}>Skip (testing for now)</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
       </SafeAreaView>
 
